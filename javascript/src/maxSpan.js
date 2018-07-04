@@ -1,3 +1,13 @@
+/*
+  QUESTION:
+  Consider the leftmost and righmost appearances of some
+  value in an array. We'll say that the "span" is the number
+  of elements between the two inclusive. A single value has
+  a span of 1. Returns the largest span found in the given
+  array.
+  NOTE:
+    Expected time complexity O(n)
+*/
 const maxSpan = (arr) => {
   let dict = {}
   let last = arr.length-1
@@ -27,7 +37,7 @@ const maxSpan = (arr) => {
   }
   return max
 }
-console.log(maxSpan([1, 2, 1, 1, 3]))
-console.log(maxSpan([1, 4, 2, 1, 4, 1, 4]))
-console.log(maxSpan([1, 4, 2, 1, 4, 4, 4]))
-console.log(maxSpan([1,2,1,4,5,6,7,8,9,10,11]))
+console.log(maxSpan([1, 2, 1, 1, 3])) // 4
+console.log(maxSpan([1, 4, 2, 1, 4, 1, 4])) // 6
+console.log(maxSpan([1, 4, 2, 1, 4, 4, 4])) // 6
+console.log(maxSpan([1,2,1,4,5,6,7,8,9,10,11])) // 3
