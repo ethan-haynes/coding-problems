@@ -11,6 +11,7 @@
  * @return {ListNode}
  */
  // O(n) runtime
+ // Runtime beats 98.95 % of javascript submissions on leetcode
 var addTwoNumbers = function(l1, l2) {
   const list = []
   const itr = (ll1, ll2, num) => {
