@@ -1,3 +1,15 @@
+/*
+  first approach used a temp array insead of templength & offset
+  there were two drawbacks with that approach:
+    1) it used O(n) space complexity in adition to the
+       histogram space complexity (i.e., sub = {})
+    2) it was expensive to resize when we backtracked to on the substring
+       when we encountered duplicated
+  second approach used the same thought behind the array, but managed an
+  offset value and length meta values instead of holding the values in memory.
+  this allows us to keep our place in the logical construction of the substring
+  without having to manage the bookkeeping of trimming the array.
+*/
 const lengthOfLongestSubstring = function(s) {
   let sub = {},
       length = 0,
