@@ -13,13 +13,12 @@ var reverse = function(x) {
 
   let length = Math.ceil(Math.log10(temp+1)), // get length of number
       num = 0,
-      previousPlace = 10**(length-1||1), // tens place of the number we want
-      nextPlace = 1 // tens place of the position we want
+      place = 10**(length-1||1) // tens place of the position we want
 
   for (var i = 0; i < length+1; i++) {
-    num += (Math.floor(temp/previousPlace)%10) * nextPlace
-    previousPlace /= 10
-    nextPlace *= 10
+    num += (temp%10) * place
+    temp = Math.floor(temp/10)
+    place /= 10
   }
   let out = num * sign
   return (out <= low || high < out) ? 0 : out // return 0 if number is outside of 32-bit range
