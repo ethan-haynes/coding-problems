@@ -15,7 +15,7 @@ var reverse = function(x) {
       num = 0,
       place = 10**(length-1||1) // tens place of the position we want
 
-  for (var i = 0; i < length+1; i++) {
+  for (var i = 0; i < length; i++) {
     num += (temp%10) * place
     temp = Math.floor(temp/10)
     place /= 10
