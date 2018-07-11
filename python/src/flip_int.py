@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-
 import math
 
-def flipInt(x):
+def flip_int(x):
     temp = math.fabs(x)
     length = math.ceil(math.log10(temp+1) or 1)
     sign = math.copysign(1, x)
@@ -17,8 +16,8 @@ def flipInt(x):
 
 
 def main():
-    print(flipInt(123))
-    print(flipInt(-321))
+    print(flip_int(123))
+    print(flip_int(-321))
 
 
 if __name__ == '__main__':
