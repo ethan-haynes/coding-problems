@@ -1,9 +1,8 @@
 # in : 3[abc]4[ab]c
 # out: abcabcabcababababc
 def decomp(s):
-    FIND_NUM, FIND_CLOSE   = 'FIND_NUM', 'FIND_CLOSE'
+    FIND_NUM, FIND_CLOSE, total = 'FIND_NUM', 'FIND_CLOSE', ''
     open, close = -1, -1
-    total = ''
 
     state = FIND_NUM
     stack = []
@@ -16,8 +15,7 @@ def decomp(s):
                 stack.append(i)
                 total = int(total)
         elif state == FIND_CLOSE:
-            if val == '[':
-                stack.append(i)
+            if val == '[': stack.append(i)
             elif val == ']':
                 stack.pop()
                 if len(stack) == 0:
