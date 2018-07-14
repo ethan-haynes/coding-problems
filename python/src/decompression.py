@@ -1,24 +1,31 @@
 # in : 3[abc]4[ab]c
 # out: abcabcabcababababc
 def decomp(s):
-    open, close = s.find('['), s.find(']')
-    if open == -1 and close == -1: return s
-    if open == -1 and close > -1 or close < open:
-        return s[:close]
+    FIND_NUM, FIND_CLOSE   = 'FIND_NUM', 'FIND_CLOSE'
+    open, close = -1, -1
+    total = ''
 
-    sub = s[open+1:]
-    total = int(''.join([ val for val in s[:open] if val.isdigit()]))
-    return total*decomp(sub) + decomp(s[close+1:])
+    state = FIND_NUM
+    stack = []
+    for i, val in enumerate(s):
+        if state == FIND_NUM:
+            if val.isdigit(): total += val
+            elif len(total) == 0: continue
+            else:
+                state, open = FIND_CLOSE, i
+                stack.append(i)
+                total = int(total)
+        elif state == FIND_CLOSE:
+            if val == '[':
+                stack.append(i)
+            elif val == ']':
+                stack.pop()
+                if len(stack) == 0:
+                    close = i
+                    break
 
-print(decomp('3[3[abc]]4[ab]c'))
+    if open == close and open == -1: return s
 
-#
-# def decomp(s):
-#     open, close = s.find('['), s.find(']')
-#     if open == -1: return s
-#
-#     sub = s[open+1:close]
-#     total = int(''.join([ val for val in s[:open] if val.isdigit()]))
-#     return total*decomp(sub) + decomp(s[close+1:])
-#
-# print(decomp('3[abc]4[ab]c'))
+    return total*decomp(s[open+1:close]) + decomp(s[close+1:])
+
+print(decomp('3[3[abc]]4[gg]c'))
