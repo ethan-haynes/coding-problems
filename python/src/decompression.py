@@ -26,4 +26,6 @@ def decomp(s):
 
     return total*decomp(s[open+1:close]) + decomp(s[close+1:])
 
+print(decomp('3[abc]4[ab]c'))
 print(decomp('3[3[abc]]4[gg]c'))
+print(decomp('3[3[abc]]10[gg]c'))
