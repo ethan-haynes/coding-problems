@@ -15,9 +15,9 @@ def find_loop_start(head):
 
 """
     TASK: find the node that is referenced twice in a circular linked list
-    NOTE: Itterative Solution
+    NOTE: Iterative Solution
 """
-def find_loop_start_ittr(head):
+def find_loop_start_itr(head):
     hash, node = {}, head
     while node:
         _id = id(node)
@@ -34,9 +34,9 @@ class LL:
 
 h = LL(0)
 h.next = LL(1)
-h.next.next = LL(0)
+h.next.next = h
 
 node = find_loop_start(h)
 print(node.val if node else node)
-node = find_loop_start_ittr(h)
+node = find_loop_start_itr(h)
 print(node.val if node else node)
