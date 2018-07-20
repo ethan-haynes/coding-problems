@@ -1,10 +1,12 @@
 def remove_nth_from(head, target):
-    def __inner_remove(node):
-        if not node.next: return None, 0
-        _, num = __inner_remove(node.next)
-        if num == target: node.next = node.next.next
+    def __inner_remove(node, count=0):
+        if not node.next: return None, 0, count
+        _, num, total = __inner_remove(node.next, count+1)
 
-        return node, num+1
+        if num == target: node.next = node.next.next # case for all except head
+        elif num+1 == total: node = node.next # case for head of LL
+
+        return node, num+1, total
 
     return __inner_remove(head)[0]
 
