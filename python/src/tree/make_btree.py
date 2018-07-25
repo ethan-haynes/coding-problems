@@ -5,6 +5,7 @@ class Tree:
         self.left = None
         self.right = None
 
+# make binary search tree from sorted array
 def make_btree(arr):
     if not len(arr): return None
     mid = math.floor(len(arr)/2)
