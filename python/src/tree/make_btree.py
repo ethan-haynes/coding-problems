@@ -19,5 +19,10 @@ def traverse(root):
         print(root.data)
         traverse(root.right)
 
+def find_val(root, target):
+    if root:
+        if root.data == target: return root
+        return find_val(root.left) or find_val(root.right)
+
 t = make_btree([1,2,3,4,5,6,7,8,9])
 traverse(t)
