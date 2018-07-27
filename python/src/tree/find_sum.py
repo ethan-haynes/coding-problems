@@ -1,20 +1,19 @@
 from make_btree import Tree, make_btree, traverse
 t = make_btree([1,2,3,4,5,6,7]) # setup
 
-
 # find all the paths that sum to target
 def find_sum(tree, target):
-    sums, path = [], []
+    path = []
     def walk(root, count=0, arr=[]):
         if root:
             arr.append(root.data)
-            for i in range(len(arr)): path.append(arr[i:])
+            for i in range(len(arr)):
+                if sum(arr[i:]) == target:
+                    path.append(arr[i:])
             walk(root.left, count+1, arr.copy())
             walk(root.right, count+1, arr.copy())
     walk(tree)
-    for n in path:
-        if sum(n) == target: sums.append(n)
-    return sums
+    return path
 
 # print all the paths that sum to target
 def print_sum(root, target, count=0, arr=[]):
