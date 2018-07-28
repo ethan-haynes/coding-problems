@@ -10,6 +10,6 @@ def navigate_grid(g):
         else:
             output.append(g)
     navigate(deepcopy(g))
-    return l
+    return output
 
 print(navigate_grid([[0,0,0],[0,0,0],[0,0,0]]))
