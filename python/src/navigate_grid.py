@@ -12,4 +12,8 @@ def navigate_grid(g):
     navigate(deepcopy(g))
     return output
 
-print(navigate_grid([[0,0,0],[0,0,0],[0,0,0]]))
+for grid in navigate_grid([[0,0,0],[0,0,0],[0,0,0]]):
+    print("---------------")
+    for row in grid:
+        print(row)
+    print("---------------")
