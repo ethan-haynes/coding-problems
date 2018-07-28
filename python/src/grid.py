@@ -1,17 +1,15 @@
 from copy import deepcopy
 
 def grid(g):
-    N, l = len(g), []
-    def _g(grid, row=0, col=0):
-        grid[row][col] = 1
-        if grid[N-1][N-1] == 0:
-            if row < N-1:
-                _g(deepcopy(grid), row+1, col)
-            if col < N-1:
-                _g(deepcopy(grid), row, col+1)
+    N, output = len(g), []
+    def navigate(g, row=0, col=0):
+        g[row][col] = 1
+        if g[N-1][N-1] == 0:
+            if row < N-1: navigate(deepcopy(g), row+1, col)
+            if col < N-1: navigate(deepcopy(g), row, col+1)
         else:
-            l.append(grid)
-    _g(deepcopy(g))
+            output.append(g)
+    navigate(deepcopy(g))
     return l
 
 print(grid([[0,0,0],[0,0,0],[0,0,0]]))
