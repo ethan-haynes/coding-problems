@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-def grid(g):
+def navigate_grid(g):
     N, output = len(g), []
     def navigate(g, row=0, col=0):
         g[row][col] = 1
@@ -12,4 +12,4 @@ def grid(g):
     navigate(deepcopy(g))
     return l
 
-print(grid([[0,0,0],[0,0,0],[0,0,0]]))
+print(navigate_grid([[0,0,0],[0,0,0],[0,0,0]]))
