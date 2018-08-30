@@ -16,7 +16,7 @@ def combinationSum3(k, n):
 
     def find_sums(i, arr):
         if len(arr) == k:
-            if sum(arr) == n:
+            if sum(arr) == n and arr not in sums:
                 sums.append(arr)
         else:
             for j in range(i, 10):
