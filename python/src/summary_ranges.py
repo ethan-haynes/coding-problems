@@ -4,7 +4,8 @@ Output: ["0->2","4->5","7"]
 Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
 '''
 def summary_ranges(nums):
-    if len(nums) <= 1: return nums
+    if len(nums) == 0: return nums
+    elif len(nums) == 1: return [str(nums[0])]
     out = []
     r, smmry = None, ''
     
