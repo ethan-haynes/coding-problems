@@ -17,6 +17,7 @@ class WordDictionary:
             if char not in next:
                 next[char] = {}
             next = next[char]
+        next['end'] = {}
 
     def search(self, word):
         """
@@ -28,16 +29,18 @@ class WordDictionary:
             next = head
             for i, char in enumerate(chars):
                 if char  == '.':
-                    if i == len(chars) - 1: return True
                     for key in next.keys():
-                        if deep_search(next[key], chars[i+1:]): return True
+                        if key != 'end':
+                            if deep_search(next, key + chars[i+1:]): return True
 
-                    return False
+                    return False # didn't find recursivly
                 else:
                     if char in next:
-                        if i == len(chars) - 1: return True
+                        if i == len(chars) - 1: 
+                            return True if 'end' in next[char] else False
                         next = next[char]
-                    else: return False
+                    else: return False # didn't match
+
         return deep_search(self.trie, word)
 
         
@@ -55,3 +58,7 @@ print(obj.search('..rd'))
 obj.addWord('ball')
 obj.addWord('belt')
 print(obj.search('b.l.'))
+obj = WordDictionary()
+obj.addWord('a')
+obj.addWord('ab')
+print(obj.search('a'))
