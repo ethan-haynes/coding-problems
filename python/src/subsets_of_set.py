@@ -1,17 +1,14 @@
-def subsets_of_set(s):
-    out = []
+def subsets_of_set(s, out=None):
+    if out == None: out = []
     
-    def __subs(s):
-        if len(s) == 0: return
-        
+    if len(s):
         if s not in out:
             out.append(s)        
             if 1 < len(s):
-                __subs(s[:-1])
-                __subs(s[1:] + [s[0]])
-    
-    __subs(s)
+                subsets_of_set(s[:-1], out)
+                subsets_of_set(s[1:] + [s[0]], out)
 
     return out
 
 print(subsets_of_set(['a','b','c']))
+print(subsets_of_set(['e','f','g','h']))
