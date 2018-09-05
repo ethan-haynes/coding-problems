@@ -10,11 +10,10 @@ def paint_fill(m, point, color):
                 m[y][x] = color
                
                 # try left, right, up, down
-                if 0 <= x-1: fill(x-1,y)
-                if x+1 <= len(m[y])-1: fill(x+1,y)
-                if 0 <= y-1: fill(x,y-1)
-                if y+1 <= len(m)-1: fill(x,y+1)
-                
+                for i in [-1,1]:
+                    if 0 <= y+i < len(m): fill(x,y+i)
+                    if 0 <= x+i < len(m[y]): fill(x+i,y)
+
     fill(x,y)
 
 m = [
