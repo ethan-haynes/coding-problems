@@ -1,14 +1,15 @@
 def paint_fill(m, point, color):
-    memo = set()
     x,y = point
-    current_color = m[y][x]
+    current_color, memo = m[y][x], set()
+    
     def fill(x,y):
         k = f'{x}{y}'
-        if k not in memo:
+        if k not in memo: # check if we have already traversed this direction
             memo.add(k)
             if m[y][x] == current_color:
                 m[y][x] = color
-                
+               
+                # try left, right, up, down
                 if 0 <= x-1: fill(x-1,y)
                 if x+1 <= len(m[y])-1: fill(x+1,y)
                 if 0 <= y-1: fill(x,y-1)
