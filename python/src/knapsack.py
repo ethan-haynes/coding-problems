@@ -5,12 +5,8 @@ def knapsack(items, S):
         for i, item in enumerate(items):
             w, val = item
             if s+w < S:
-                place(
-                    items[:i] + items[i+1:],
-                    path + [item],
-                    s+w,
-                    val + v
-                )
+                place(items[:i] + items[i+1:], path + [item], s+w, val + v)
+        
         if max['v'] < v:
             max['v'], max['path'] = v, path
     
