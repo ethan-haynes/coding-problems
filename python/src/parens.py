@@ -15,4 +15,14 @@ def parenthesis(n):
     paren(n, [[] for _ in range(n)])
     return list(out)
 
+def genParens(n):
+    def gen(o, c, s):
+        if not o and not c: return [s]
+        if not o and c: return gen([], c[1:], s + c[-1])
+        if len(o) == len(c): return gen(o[1:], c[::], s + o[-1])
+
+        return gen(o[1:], c[::], s + o[-1]) + gen(o[::], c[1:], s + c[-1])
+    return gen(['(' for _ in range(n)],[')' for _ in range(n)],'')
+
 print(parenthesis(3))
+print(genParens(3))
