@@ -41,6 +41,27 @@ class Stack:
             return self._min.data
 
 
+class StackMin:
+    def __init__(self, data):
+        self.__min = [data]
+        self.__stack = []
+
+    def pop(self):
+        if self.__stack:
+            return self.__stack.pop()
+        elif self.__min:
+            return self.__min.pop()
+
+    def push(self, data):
+        if not self.__min or data < self.__min[-1]:
+            self.__min.append(data)
+        else:
+            self.__stack.append(data)
+
+    def min(self):
+        if self.__min:
+            return self.__min.pop()
+
 s = Stack(0)
 s.push(1)
 s.push(2)
@@ -49,3 +70,13 @@ s.push(-1)
 print(s.min())
 print(s.pop())
 print(s.min())
+
+s = StackMin(0)
+s.push(1)
+s.push(2)
+s.push(3)
+s.push(-1)
+print(s.min())
+print(s.pop())
+print(s.min())
+
