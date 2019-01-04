@@ -1,6 +1,6 @@
 G = {'A': ['B', 'C', 'D'], 'B': ['D'], 'C': ['A','B'], 'D': ['C']}
 
-def lcp(g, m, n, memo={}):
+def sp(g, m, n, memo={}):
     if not g: return []
     if m == n: return [n]
 
@@ -10,8 +10,8 @@ def lcp(g, m, n, memo={}):
         for v in g:
             if v == m:
                 for e in G[v]:
-                    paths.append(lcp(g,e,n, memo))
+                    paths.append(sp(g,e,n, memo))
         memo[m] = [m] + min(paths, key=len)
     return memo[m]
 
-print(lcp(G, 'B', 'A', {}))
+print(sp(G, 'B', 'A', {}))
