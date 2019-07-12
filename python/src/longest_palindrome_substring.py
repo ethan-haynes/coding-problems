@@ -8,4 +8,15 @@ def lps(s):
                 l = sub
     return l
 
+def lps2(s):
+    n = len(s)
+    m = [[ 0 for i in range(n) ] for i in range(n) ]
+    for i in range(n//2):
+        for j in range(i+1,n+1):
+            sub = s[i:j]
+            if sub == sub[::-1]:
+                m[i][j-1] = len(sub)
+    return m
+
 print(lps('abaabc'))
+print(lps2('abaabc'))
