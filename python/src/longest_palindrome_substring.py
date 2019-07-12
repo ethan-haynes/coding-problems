@@ -18,5 +18,16 @@ def lps2(s):
                 m[i][j-1] = len(sub)
     return m
 
+def lps3(s):
+    n = len(s)
+    l = ""
+    for i in range(n//2):
+        for j in range(i+1,n+1):
+            sub = s[i:j]
+            if len(sub) > len(l) and sub == sub[::-1]:
+                l = sub
+    return l
+
 print(lps('abaabc'))
 print(lps2('abaabc'))
+print(lps3('abaabc'))
