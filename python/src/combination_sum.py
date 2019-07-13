@@ -26,4 +26,20 @@ def combinationSum3(k, n):
 
     return sums
 
+
+def combsum3(num_left, target, start=1, end=10):
+    sums = []
+    
+    if num_left == 0:
+        return sums
+    
+    for num in range(start, end):
+        if num == target and num_left == 1:
+            sums.append([num])
+        for sub_sum in combsum3(num_left-1, target-num, num):
+            sums.append([num] + sub_sum)
+    
+    return sums
+            
 print(combinationSum3(3,7))
+print(combsum3(3,7))
