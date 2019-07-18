@@ -20,5 +20,23 @@ def subset2(nums):
     sub(nums, [])
     return out
 
+def subset3(arr):
+    n = len(arr)
+    if n == 0:
+        return []
+    if n == 1:
+        return [arr]
+
+    subs = []
+
+    for i in range(n):
+        m = arr[i]
+        subs.append([m])
+        remainder = arr[i+1:]
+        for sub in subset3(remainder):
+            subs.append([m] + sub)
+    return subs
+
 print(subset([1,2,3], 3))
 print(subset2([1,2,3]))
+print(subset3([1,2,3]))
